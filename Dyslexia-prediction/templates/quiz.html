@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+       <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">   
+
+  <!-- Icon Font Stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Libraries Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/lib/animate/animate.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/lib/owlcarousel/assets/owl.carousel.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/lib/lightbox/css/lightbox.min.css') }}">
+  
+
+  <!-- Customized Bootstrap Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  
+
+  <!-- Template Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+    <title>Dyslexia Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5">
+            <a href="home.html" class="navbar-brand d-flex align-items-center">
+                <h1 class="m-0">Dyslexia Detection</h1>
+            </a>
+            <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <a href="home.html" class="nav-item nav-link active">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
+                    <a href="survey.html" class="nav-item nav-link">Survey</a>
+                    <a href="quiz.html" class="nav-item nav-link">Quiz</a>
+                    <a href="predict.html" class="nav-item nav-link">Predict</a>
+                    
+                </div>
+                <div class="border-start ps-4 d-none d-lg-block">
+                    
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="main">
+        <form name="quiz" method="post" action="quiz.php">
+            <div class="question">
+                <span id="question">
+                    Question 1
+                </span><br><br>
+                <div class="content" onclick="q1score()">
+                    Check whether these two alphabets are same or not?<br><br>
+                    <img src="{{url_for('static',filename='images/o.png')}}" width=100 height=100><img src="{{url_for('static',filename='images/0.jpeg')}}" width=100 height=100><br>
+                    <input type="radio" id="q1a" name="q1" value="4">
+                    <label for="q1a">Yes</label><br>
+                    <input type="radio" id="q1b" name="q1" value="0">
+                    <label for="q1b">No</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 2
+                </span><br><br>
+                <div class="content" onclick="q2score()">
+                    Guess the fruit in the picture below.<br><br>
+                    <img src="{{url_for('static',filename='images/grapes.jpeg')}}" width=350 height=250><br>
+                    <input type="radio" id="q2a" name="q2" value="4">
+                    <label for="q2a">Grapes</label><br>
+                    <input type="radio" id="q2b" name="q2" value="0">
+                    <label for="q2b">Orange</label><br>
+                    <input type="radio" id="q2c" name="q2" value="0">
+                    <label for="q2c">Banana</label><br>
+                    <input type="radio" id="q2d" name="q2" value="0">
+                    <label for="q2d">Mango</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 3
+                </span><br><br>
+                <div class="content" onclick="q3score()">
+                    Check whether these two alphabets are same or not?<br><br>
+                    <img src="{{url_for('static',filename='images/g.jpg')}}" width=100 height=100><img src="{{url_for('static',filename='images/s.jpeg')}}" width=100 height=100><br>
+                    <input type="radio" id="q3a" name="q3" value="0">
+                    <label for="q3a">Yes</label><br>
+                    <input type="radio" id="q3b" name="q3" value="4">
+                    <label for="q3b">No</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 4
+                </span><br><br>
+                <div class="content" onclick="q4score()">
+                    Which letter is G?<br><br>
+                    <img src="{{url_for('static',filename='images/g.jpg')}}" width=100 height=100><img src="{{url_for('static',filename='images/o.png')}}" width=100 height=100><br>
+                    <input type="radio" id="q4a" name="q4" value="4">
+                    <label for="q4a">First</label><br>
+                    <input type="radio" id="q4b" name="q4" value="0">
+                    <label for="q4b">Second</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 5
+                </span><br><br>
+                <div class="content" onclick="q5score()">
+                    Which letter CAT starts with?<br><br>
+                    <img src="{{url_for('static',filename='images/cat.jpeg')}}" width=400 height=300><br>
+                    <input type="radio" id="q5a" name="q5" value="0">
+                    <label for="q5a">K</label><br>
+                    <input type="radio" id="q5b" name="q5" value="0">
+                    <label for="q5b">S</label><br>
+                    <input type="radio" id="q5c" name="q5" value="4">
+                    <label for="q5c">C</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 6
+                </span><br><br>
+                <div class="content" onclick="q6score()">
+                    What is the smaller version of this letter?<br><br>
+                    <img src="{{url_for('static',filename='images/b.png')}}"width=100 height=100><br>
+                    <input type="radio" id="q6a" name="q6" value="0">
+                    <label for="q6a">d</label><br>
+                    <input type="radio" id="q6b" name="q6" value="4">
+                    <label for="q6b">b</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 7
+                </span><br><br>
+                <div class="content" onclick="q7score()">
+                    What do you hear?<br><br>
+                    <audio controls>
+                        <source src="{{url_for('static',filename='images/s.mp3')}}"type="audio/mp3">
+                    </audio><br><br>
+                    <input type="radio" id="q7a" name="q7" value="0">
+                    <label for="q7a">F</label><br>
+                    <input type="radio" id="q7b" name="q7" value="4">
+                    <label for="q7b">S</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 8
+                </span><br><br>
+                <div class="content" onclick="q8score()">
+                    What do you see in the picture?<br><br>
+                    <img src="{{url_for('static',filename='images/god.jpeg')}}" width=300 height=200><br><br>
+                    <input type="radio" id="q8a" name="q8" value="0">
+                    <label for="q8a">DOG</label><br>
+                    <input type="radio" id="q8b" name="q8" value="4">
+                    <label for="q8b">GOD</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 9
+                </span><br><br>
+                <div class="content"  onclick="q9score()">
+                    Which hand is left and Which hand is right?<br><br>
+                    <img src="{{url_for('static',filename='images/right.jpeg')}}" width=300 height=200><img src="{{url_for('static',filename='images/left.jpeg')}}" width=300 height=200><br><br>
+                    <input type="radio" id="q9a" name="q9" value="4">
+                    <label for="q9a">First one is right and next one is
+                        left</label><br>
+                    <input type="radio" id="q9b" name="q9" value="0">
+                    <label for="q9b">First one is left and next one is
+                        right</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 10
+                </span><br><br>
+                <div class="content"  onclick="q10score()">
+                    What do you hear?<br><br>
+                    <audio controls>
+                        <source src="{{url_for('static',filename='images/lake.mp3')}}" type="audio/mp3">
+                    </audio><br><br>
+                    <input type="radio" id="q10a" name="q10" value="0">
+                    <label for="q10a">CAKE</label><br>
+                    <input type="radio" id="q10b" name="q10" value="4">
+                    <label for="q10b">LAKE</label><br>
+                    <input type="radio" id="q10c" name="q10" value="0">
+                    <label for="q10c">TAKE</label><br>
+                    <input type="radio" id="q10d" name="q10" value="0">
+                    <label for="q10d">FAKE</label><br>
+                </div>
+                <br>
+            
+            
+            <div class="d-flex justify-content-center align-items-center mt-5">
+                <button type="submit" class="btn btn-secondary rounded-pill py-2 px-3">
+                    <span id="button" onclick="submitscore()">Submit</span>
+                </button>
+            </div>
+            </div>
+        </form>
+    </div>
+    <a
+    href="#"
+    class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"
+  >
+    <i class="bi bi-arrow-up"></i>
+  </a>
+   
+        <div class="container-fluid bg-dark footer mt-5 py-5">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Follow Us:</h5>
+                        <div class="d-flex pt-3">
+                            <a class="btn btn-square btn-secondary rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square btn-secondary rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square btn-secondary rounded-circle me-2" href="#"><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-square btn-secondary rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Quick Links</h5>
+                        <a class="btn btn-link" href="#">About Us</a>
+                        <a class="btn btn-link" href="#">Contact Us</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Business Hours</h5>
+                        <p class="mb-1">Monday - Friday</p>
+                        <h6 class="text-light">09:00 am - 07:00 pm</h6>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <p>Feel free to connect with us.</p>
+                        <div class="position-relative w-100">
+                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email" />
+                            <button type="button" class="btn btn-secondary py-2 position-absolute top-0 end-0 mt-2 me-2">Sign Up</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>
+        new WOW().init();
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const backToTopButton = document.querySelector('.back-to-top');
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.style.display = 'block';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            });
+
+            backToTopButton.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script> 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Initialize parallax effect
+            try {
+                // Initialize WOW.js (ensure you include the library in your HTML if used)
+                new WOW().init();
+
+                // Sticky Navbar
+                const stickyNavbar = () => {
+                    window.addEventListener("scroll", () => {
+                        const stickyNav = document.querySelector(".sticky-top");
+                        if (window.scrollY > 300) {
+                            stickyNav.classList.add("shadow-sm");
+                            stickyNav.style.top = "0px";
+                        } else {
+                            stickyNav.classList.remove("shadow-sm");
+                            stickyNav.style.top = "-100px";
+                        }
+                    });
+                };
+                stickyNavbar();
+
+                // Back to top button
+               
+
+                // Facts counter
+                const counterUp = () => {
+                    const counterElements = document.querySelectorAll('[data-toggle="counter-up"]');
+                    counterElements.forEach((counterElement) => {
+                        const target = +counterElement.getAttribute("data-target");
+                        const duration = +counterElement.getAttribute("data-duration");
+                        const step = Math.ceil(target / (duration / 15));
+                        let count = 0;
+                        const counterInterval = setInterval(() => {
+                            count += step;
+                            counterElement.innerText = count;
+                            if (count >= target) {
+                                clearInterval(counterInterval);
+                                counterElement.innerText = target;
+                            }
+                        }, 15);
+                    });
+                };
+                counterUp();
+
+                // Testimonials carousel
+                const testimonialCarousel = () => {
+                    const testimonialCarouselElement = document.querySelector(".testimonial-carousel");
+                    if (testimonialCarouselElement) {
+                        $(testimonialCarouselElement).owlCarousel({
+                            autoplay: true,
+                            smartSpeed: 1000,
+                            items: 1,
+                            dots: false,
+                            loop: true,
+                            nav: true,
+                            navText: [
+                                '<i class="bi bi-chevron-left"></i>',
+                                '<i class="bi bi-chevron-right"></i>',
+                            ],
+                        });
+                    }
+                };
+                testimonialCarousel();
+            } catch (error) {
+                console.error("Error initializing parallax:", error);
+            }
+        });
+    </script>
+     <script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+     <script src="lib/wow/wow.min.js" type="module"></script>
+     <script src="lib/easing/easing.min.js" type="module"></script>
+     <script src="lib/waypoints/waypoints.min.js" type="module"></script>
+     <script src="lib/owlcarousel/owl.carousel.min.js" type="module"></script>
+     <script src="lib/counterup/counterup.min.js" type="module"></script>
+     <script src="lib/parallax/parallax.min.js" type="module"></script>
+     <script src="lib/lightbox/js/lightbox.min.js" type="module"></script>
+<script src="{{ url_for('static', filename='js/quiz.js') }}">
+
+</script>
+</body>
+
+</html>

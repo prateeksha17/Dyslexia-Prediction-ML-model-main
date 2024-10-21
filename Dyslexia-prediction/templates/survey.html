@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dyslexia Detection</title>
+       <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">   
+
+  <!-- Icon Font Stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Libraries Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/lib/animate/animate.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/lib/owlcarousel/assets/owl.carousel.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/lib/lightbox/css/lightbox.min.css') }}">
+  
+
+  <!-- Customized Bootstrap Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  
+
+  <!-- Template Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/survey.css') }}">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5">
+            <a href="home.html" class="navbar-brand d-flex align-items-center">
+                <h1 class="m-0">Dyslexia Detection</h1>
+            </a>
+            <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <a href="home.html" class="nav-item nav-link active">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
+                    <a href="survey.html" class="nav-item nav-link">Survey</a>
+                    <a href="quiz.html" class="nav-item nav-link">Quiz</a>
+                    <a href="predict.html" class="nav-item nav-link">Predict</a>
+                    
+                </div>
+                
+            </div>
+        </nav>
+    </header>
+    
+    <div class="main">
+        <form name="survey" method="post" action="survey.php" >
+            <div class="question justify-content-center align-items-center custom-margin">
+
+                <span id="question">
+                    Question 1
+                </span><br><br>
+                <div class="content" onclick="q1score()">
+                    Did your child struggle to learn to count?<br>
+                    <input type="radio" id="q1a" name="q1" value="0">
+                    <label for="q1a">Yes-frequently</label><br>
+                    <input type="radio" id="q1b" name="q1" value="2">
+                    <label for="q1b">Sometimes</label><br>
+                    <input type="radio" id="q1c" name="q1" value="4">
+                    <label for="q1c">No-never</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 2
+                </span><br><br>
+                <div class="content" onclick="q2score()">
+                    Does he/she say numbers out of order, long after peers have mastered this skill?<br>
+                    <input type="radio" id="q2a" name="q2" value="0">
+                    <label for="q2a">Yes-frequently</label><br>
+                    <input type="radio" id="q2b" name="q2" value="2">
+                    <label for="q2b">Sometimes</label><br>
+                    <input type="radio" id="q2c" name="q2" value="4">
+                    <label for="q2c">No-never</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 3
+                </span><br><br>
+                <div class="content" onclick="q3score()">
+                    Does your child not seem to understand the connection between the symbol "4" and the word "four"?
+                    Does he make mistakes when reading or following directions involving numbers, words and symbols?<br>
+                    <input type="radio" id="q3a" name="q3" value="0">
+                    <label for="q3a">Yes-frequently</label><br>
+                    <input type="radio" id="q3b" name="q3" value="2">
+                    <label for="q3b">Sometimes</label><br>
+                    <input type="radio" id="q3c" name="q3" value="4">
+                    <label for="q3c">No-never</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 4
+                </span><br><br>
+                <div class="content" onclick="q4score()">
+                    Does your child struggle to connect the concept of numbers to real-world items? When you ask him how
+                    many
+                    cookies are left, for example, does he seem confused by the question or answer incorrectly?<br>
+                    <input type="radio" id="q4a" name="q4" value="0">
+                    <label for="q4a">Yes-frequently</label><br>
+                    <input type="radio" id="q4b" name="q4" value="2">
+                    <label for="q4b">Sometimes</label><br>
+                    <input type="radio" id="q4c" name="q4" value="4">
+                    <label for="q4c">No-never</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 5
+                </span><br><br>
+                <div class="content" onclick="q5score()">
+                    Does your child not seem to understand the difference between adding and subtracting? Does she
+                    confuse the +
+                    and - symbols when completing math problems?<br>
+                    <input type="radio" id="q5a" name="q5" value="0">
+                    <label for="q5a">Yes-frequently</label><br>
+                    <input type="radio" id="q5b" name="q5" value="2">
+                    <label for="q5b">Sometimes</label><br>
+                    <input type="radio" id="q5c" name="q5" value="4">
+                    <label for="q5c">No-never</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 6
+                </span><br><br>
+                <div class="content" onclick="q6score()">
+                    Does your child still count on his fingers past third grade?<br>
+                    <input type="radio" id="q6a" name="q6" value="0">
+                    <label for="q6a">Yes-frequently</label><br>
+                    <input type="radio" id="q6b" name="q6" value="2">
+                    <label for="q6b">Sometimes</label><br>
+                    <input type="radio" id="q6c" name="q6" value="4">
+                    <label for="q6c">No-never</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 7
+                </span><br><br>
+                <div class="content" onclick="q7score()">
+                    Difficulty sustaining attention; seems "hyper" or "daydreamer"?<br>
+                    <input type="radio" id="q7a" name="q7" value="0">
+                    <label for="q7a">Yes</label><br>
+                    <input type="radio" id="q7b" name="q7" value="4">
+                    <label for="q7b">No</label><br>
+                    <input type="radio" id="q7c" name="q7" value="2">
+                    <label for="q7c">Unknown</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 8
+                </span><br><br>
+                <div class="content" onclick="q8score()">
+                    Confused by letters, numbers, words, sequences, or verbal explanations?<br>
+                    <input type="radio" id="q8a" name="q8" value="0">
+                    <label for="q8a">Yes</label><br>
+                    <input type="radio" id="q8b" name="q8" value="4">
+                    <label for="q8b">No</label><br>
+                    <input type="radio" id="q8c" name="q8" value="2">
+                    <label for="q8c">Unknown</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 9
+                </span><br><br>
+                <div class="content" onclick="q9score()">
+                    Reads and rereads with little comprehension?<br>
+                    <input type="radio" id="q9a" name="q9" value="0">
+                    <label for="q9a">Yes</label><br>
+                    <input type="radio" id="q9b" name="q9" value="4">
+                    <label for="q9b">No</label><br>
+                    <input type="radio" id="q9c" name="q9" value="2">
+                    <label for="q9c">Unknown</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 10
+                </span><br><br>
+                <div class="content" onclick="q10score()">
+                    Difficulty putting thoughts into words; speaks in halting phrases; leaves sentences incomplete?<br>
+                    <input type="radio" id="q10a" name="q10" value="0">
+                    <label for="q10a">Yes</label><br>
+                    <input type="radio" id="q10b" name="q10" value="4">
+                    <label for="q10b">No</label><br>
+                    <input type="radio" id="q10c" name="q10" value="2">
+                    <label for="q10c">Unknown</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 11
+                </span><br><br>
+                <div class="content" onclick="q11score()">
+                    Can count, but has difficulty counting objects and dealing with money?<br>
+                    <input type="radio" id="q11a" name="q11" value="0">
+                    <label for="q11a">Yes</label><br>
+                    <input type="radio" id="q11b" name="q11" value="4">
+                    <label for="q11b">No</label><br>
+                    <input type="radio" id="q11c" name="q11" value="2">
+                    <label for="q11c">Unknown</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 12
+                </span><br><br>
+                <div class="content" onclick="q12score()">
+                    Does your child worry for sequences, facts and information that were not taught before?<br>
+                    <input type="radio" id="q12a" name="q12" value="0">
+                    <label for="q12a">Yes</label><br>
+                    <input type="radio" id="q12b" name="q12" value="4">
+                    <label for="q12b">No</label><br>
+                    <input type="radio" id="q12c" name="q12" value="2">
+                    <label for="q12c">Unknown</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 13
+                </span><br><br>
+                <div class="content" onclick="q13score()">
+                    Does your child omplain of dizziness, headaches or stomach aches while reading?<br>
+                    <input type="radio" id="q13a" name="q13" value="0">
+                    <label for="q13a">Yes</label><br>
+                    <input type="radio" id="q13b" name="q13" value="4">
+                    <label for="q13b">No</label><br>
+                    <input type="radio" id="q13c" name="q13" value="2">
+                    <label for="q13c">Unknown</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 14
+                </span><br><br>
+                <div class="content" onclick="q14score()">
+                    Is reading extremely difficult for your child? (Below grade or age level)<br>
+                    <input type="radio" id="q14a" name="q14" value="0">
+                    <label for="q14a">Yes</label><br>
+                    <input type="radio" id="q14b" name="q14" value="4">
+                    <label for="q14b">No</label><br>
+                    <input type="radio" id="q14c" name="q14" value="2">
+                    <label for="q14c">Unknown</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 15
+                </span><br><br>
+                <div class="content" onclick="q15score()">
+                    Is his spelling ability poor? Letters missed, reversed etc?<br>
+                    <input type="radio" id="q15a" name="q15" value="0">
+                    <label for="q15a">Yes</label><br>
+                    <input type="radio" id="q15b" name="q15" value="4">
+                    <label for="q15b">No</label><br>
+                    <input type="radio" id="q15c" name="q15" value="2">
+                    <label for="q15c">Unknown</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 16
+                </span><br><br>
+                <div class="content" onclick="q16score()">
+                    Is it difficult for him to rhyme words?(If you are not sure, play a rhyming game with your child or
+                    student)<br>
+                    <input type="radio" id="q16a" name="q16" value="0">
+                    <label for="q16a">Yes</label><br>
+                    <input type="radio" id="q16b" name="q16" value="4">
+                    <label for="q16b">No</label><br>
+                    <input type="radio" id="q16c" name="q16" value="2">
+                    <label for="q16c">Unknown</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 17
+                </span><br><br>
+                <div class="content" onclick="q17score()">
+                    Is there difficulty telling time on a clock with hands and/or tying shoes with laces?<br>
+                    <input type="radio" id="q17a" name="q17" value="0">
+                    <label for="q17a">Yes</label><br>
+                    <input type="radio" id="q17b" name="q17" value="4">
+                    <label for="q17b">No</label><br>
+                    <input type="radio" id="q17c" name="q17" value="2">
+                    <label for="q17c">Unknown</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 18
+                </span><br><br>
+                <div class="content" onclick="q18score()">
+                    "Is there difficulty finding the right words while speaking? Lots of ums, ahs, 'those things', and
+                    'that
+                    stuff'?<br>
+                    <input type="radio" id="q18a" name="q18" value="0">
+                    <label for="q18a">Yes</label><br>
+                    <input type="radio" id="q18b" name="q18" value="4">
+                    <label for="q18b">No</label><br>
+                    <input type="radio" id="q18c" name="q18" value="2">
+                    <label for="q18c">Unknown</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 19
+                </span><br><br>
+                <div class="content" onclick="q19score()">
+                    Pauses, repeats or frequent mistakes when reading aloud?<br>
+                    <input type="radio" id="q19a" name="q19" value="0">
+                    <label for="q19a">Yes</label><br>
+                    <input type="radio" id="q19b" name="q19" value="4">
+                    <label for="q19b">No</label><br>
+                    <input type="radio" id="q19c" name="q19" value="2">
+                    <label for="q19c">Unknown</label><br>
+                </div>
+                <br>
+
+                <span id="question">
+                    Question 20
+                </span><br><br>
+                <div class="content" onclick="q20score()">
+                    Unusually high or low tolerance for pain?<br>
+                    <input type="radio" id="q20a" name="q20" value="0">
+                    <label for="q20a">Yes</label><br>
+                    <input type="radio" id="q20b" name="q20" value="4">
+                    <label for="q20b">No</label><br>
+                    <input type="radio" id="q20c" name="q20" value="2">
+                    <label for="q20c">Unknown</label><br>
+                </div>
+                <br>
+                
+                <div class="d-flex justify-content-center align-items-center mt-5">
+                    <button class="btn btn-secondary rounded-pill py-2 px-3">
+                        <span id="button" onclick="submitscore()">
+                            Submit
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <a
+      href="#"
+      class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"
+    >
+      <i class="bi bi-arrow-up"></i>
+    </a>
+        <div class="container-fluid bg-dark footer mt-5 py-5">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Follow Us:</h5>
+                        <div class="d-flex pt-3">
+                            <a class="btn btn-square btn-secondary rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square btn-secondary rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square btn-secondary rounded-circle me-2" href="#"><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-square btn-secondary rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Quick Links</h5>
+                        <a class="btn btn-link" href="#">About Us</a>
+                        <a class="btn btn-link" href="#">Contact Us</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Business Hours</h5>
+                        <p class="mb-1">Monday - Friday</p>
+                        <h6 class="text-light">09:00 am - 07:00 pm</h6>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <p>Feel free to connect with us.</p>
+                        <div class="position-relative w-100">
+                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email" />
+                            <button type="button" class="btn btn-secondary py-2 position-absolute top-0 end-0 mt-2 me-2">Sign Up</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+   
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>
+        new WOW().init();
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const backToTopButton = document.querySelector('.back-to-top');
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.style.display = 'block';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            });
+
+            backToTopButton.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script> 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Initialize parallax effect
+            try {
+                // Initialize WOW.js (ensure you include the library in your HTML if used)
+                new WOW().init();
+
+                // Sticky Navbar
+                const stickyNavbar = () => {
+                    window.addEventListener("scroll", () => {
+                        const stickyNav = document.querySelector(".sticky-top");
+                        if (window.scrollY > 300) {
+                            stickyNav.classList.add("shadow-sm");
+                            stickyNav.style.top = "0px";
+                        } else {
+                            stickyNav.classList.remove("shadow-sm");
+                            stickyNav.style.top = "-100px";
+                        }
+                    });
+                };
+                stickyNavbar();
+
+                // Back to top button
+               
+
+                // Facts counter
+                const counterUp = () => {
+                    const counterElements = document.querySelectorAll('[data-toggle="counter-up"]');
+                    counterElements.forEach((counterElement) => {
+                        const target = +counterElement.getAttribute("data-target");
+                        const duration = +counterElement.getAttribute("data-duration");
+                        const step = Math.ceil(target / (duration / 15));
+                        let count = 0;
+                        const counterInterval = setInterval(() => {
+                            count += step;
+                            counterElement.innerText = count;
+                            if (count >= target) {
+                                clearInterval(counterInterval);
+                                counterElement.innerText = target;
+                            }
+                        }, 15);
+                    });
+                };
+                counterUp();
+
+                // Testimonials carousel
+                const testimonialCarousel = () => {
+                    const testimonialCarouselElement = document.querySelector(".testimonial-carousel");
+                    if (testimonialCarouselElement) {
+                        $(testimonialCarouselElement).owlCarousel({
+                            autoplay: true,
+                            smartSpeed: 1000,
+                            items: 1,
+                            dots: false,
+                            loop: true,
+                            nav: true,
+                            navText: [
+                                '<i class="bi bi-chevron-left"></i>',
+                                '<i class="bi bi-chevron-right"></i>',
+                            ],
+                        });
+                    }
+                };
+                testimonialCarousel();
+            } catch (error) {
+                console.error("Error initializing parallax:", error);
+            }
+        });
+    </script>
+     <script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+     <script src="lib/wow/wow.min.js" type="module"></script>
+     <script src="lib/easing/easing.min.js" type="module"></script>
+     <script src="lib/waypoints/waypoints.min.js" type="module"></script>
+     <script src="lib/owlcarousel/owl.carousel.min.js" type="module"></script>
+     <script src="lib/counterup/counterup.min.js" type="module"></script>
+     <script src="lib/parallax/parallax.min.js" type="module"></script>
+     <script src="lib/lightbox/js/lightbox.min.js" type="module"></script>
+    <script src="{{ url_for('static', filename='js/survey.js') }}">
+       
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <html>
+    <head >
+         <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">   
+
+  <!-- Icon Font Stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Libraries Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/lib/animate/animate.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/lib/owlcarousel/assets/owl.carousel.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/lib/lightbox/css/lightbox.min.css') }}">
+  
+
+  <!-- Customized Bootstrap Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  
+
+  <!-- Template Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <title>Dyslexia Detection</title>
+      <meta name="description" content="" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="stylesheet" href="" />
+  
+
+    </head>
+    <body>
+      <header>
+        <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5">
+          <a href="/home" class="navbar-brand d-flex align-items-center">
+              <h1 class="m-0">Dyslexia Detection</h1>
+          </a>
+          <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+              <div class="navbar-nav ms-auto p-4 p-lg-0">
+                  <a href="home.html" class="nav-item nav-link active">Home</a>
+                  <a href="about.html" class="nav-item nav-link">About</a>
+                  <a href="survey.html" class="nav-item nav-link">Survey</a>
+                  <a href="quiz.html" class="nav-item nav-link">Quiz</a>
+                  <a href="predict.html" class="nav-item nav-link">Predict</a>
+                  
+              </div>
+              <div class="border-start ps-4 d-none d-lg-block">
+                  
+              </div>
+          </div>
+      </nav>
+      </header>
+      <div >
+        <style>
+            .form-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr); 
+                grid-gap: 20px; 
+            }
+        
+            
+            @media screen and (max-width: 768px) {
+                .form-grid {
+                    grid-template-columns: repeat(2, 1fr); 
+                }
+            }
+        </style>
+        
+        <div class="container-fluid banner my-3 py-3 parallax-window"
+    style="background: linear-gradient(to top, #5B8C51, #EDDD5E); width: 100%;">
+
+    
+    <div class="container py-3">
+        <span class="w d-flex justify-content-center align-items-center py-3" id="answer">
+            {{ prediction_text }}</span>
+        <h3>Please enter the scores you received</h3><br> 
+        
+        <form action="{{ url_for('predict')}}" method="post">
+            <div class="row g-5 form-grid">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-sm-8">
+                            <h3 class="text-white mb-3"><label for="lang" class="form__label">Language Vocabulary Score</label></h3>
+                            <p class="text-white mb-4">
+                                <input class="form-control" type="text" name="Language_vocab" placeholder="Language Vocabulary" required="required"
+                                id="lang">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.6s">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-sm-8">
+                            <h3 class="text-white mb-3"><label for="mem" class="form__label">Memory Score</label></h3>
+                            <p class="text-white mb-4">
+                                <input class="form-control" type="text" name="Memory" placeholder="Memory" required="required" id="mem">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.9s">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-sm-8">
+                            <h3 class="text-white mb-3"><label for="sp" class="form__label">Speed</label></h3>
+                            <p class="text-white mb-4">
+                                <input class="form-control" type="text" name="Speed" placeholder="Speed" required="required" id="sp">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="1.2s">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-sm-8">
+                            <h3 class="text-white mb-3"><label for="vis" class="form__label">Visual Discrimination</label></h3>
+                            <p class="text-white mb-4">
+                                <input class="form-control" type="text" name="Visual_discrimination" placeholder="Visual Discrimination"
+                                required="required" id="vis">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.9s">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-sm-8">
+                            <h3 class="text-white mb-3"><label for="aud" class="form__label">Audio Discrimination</label></h3>
+                            <p class="text-white mb-4">
+                                <input class="form-control" type="text" name="Audio_discrimination" placeholder="Audio Discrimination"
+                                required="required" id="aud">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="1.2s">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-sm-8">
+                            <h3 class="text-white mb-3"><label for="sur" class="form__label">Survey Score</label></h3>
+                            <p class="text-white mb-6z">
+                                <input class="form-control" type="text" name="Survey_score" placeholder="Survey Score" required="required"
+                                id="sur">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center align-items-center mt-5">
+                <button type="submit" class="btn btn-secondary rounded-pill py-3 px-5">
+                    Predict
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+          
+    </div>     
+  
+
+   
+        
+      </div>
+      </div>
+      <a
+      href="#"
+      class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"
+    >
+      <i class="bi bi-arrow-up"></i>
+    </a>
+        <div class="container-fluid bg-dark footer mt-5 py-5">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Follow Us:</h5>
+                        <div class="d-flex pt-3">
+                            <a class="btn btn-square btn-secondary rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square btn-secondary rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square btn-secondary rounded-circle me-2" href="#"><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-square btn-secondary rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Quick Links</h5>
+                        <a class="btn btn-link" href="#">About Us</a>
+                        <a class="btn btn-link" href="#">Contact Us</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Business Hours</h5>
+                        <p class="mb-1">Monday - Friday</p>
+                        <h6 class="text-light">09:00 am - 07:00 pm</h6>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <p>Feel free to connect with us.</p>
+                        <div class="position-relative w-100">
+                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email" />
+                            <button type="button" class="btn btn-secondary py-2 position-absolute top-0 end-0 mt-2 me-2">Sign Up</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>
+        new WOW().init();
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const backToTopButton = document.querySelector('.back-to-top');
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.style.display = 'block';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            });
+
+            backToTopButton.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script> 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Initialize parallax effect
+            try {
+                // Initialize WOW.js (ensure you include the library in your HTML if used)
+                new WOW().init();
+
+                // Sticky Navbar
+                const stickyNavbar = () => {
+                    window.addEventListener("scroll", () => {
+                        const stickyNav = document.querySelector(".sticky-top");
+                        if (window.scrollY > 300) {
+                            stickyNav.classList.add("shadow-sm");
+                            stickyNav.style.top = "0px";
+                        } else {
+                            stickyNav.classList.remove("shadow-sm");
+                            stickyNav.style.top = "-100px";
+                        }
+                    });
+                };
+                stickyNavbar();
+
+                // Back to top button
+               
+
+                // Facts counter
+                const counterUp = () => {
+                    const counterElements = document.querySelectorAll('[data-toggle="counter-up"]');
+                    counterElements.forEach((counterElement) => {
+                        const target = +counterElement.getAttribute("data-target");
+                        const duration = +counterElement.getAttribute("data-duration");
+                        const step = Math.ceil(target / (duration / 15));
+                        let count = 0;
+                        const counterInterval = setInterval(() => {
+                            count += step;
+                            counterElement.innerText = count;
+                            if (count >= target) {
+                                clearInterval(counterInterval);
+                                counterElement.innerText = target;
+                            }
+                        }, 15);
+                    });
+                };
+                counterUp();
+
+                // Testimonials carousel
+                const testimonialCarousel = () => {
+                    const testimonialCarouselElement = document.querySelector(".testimonial-carousel");
+                    if (testimonialCarouselElement) {
+                        $(testimonialCarouselElement).owlCarousel({
+                            autoplay: true,
+                            smartSpeed: 1000,
+                            items: 1,
+                            dots: false,
+                            loop: true,
+                            nav: true,
+                            navText: [
+                                '<i class="bi bi-chevron-left"></i>',
+                                '<i class="bi bi-chevron-right"></i>',
+                            ],
+                        });
+                    }
+                };
+                testimonialCarousel();
+            } catch (error) {
+                console.error("Error initializing parallax:", error);
+            }
+        });
+    </script>
+     <script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+     <script src="lib/wow/wow.min.js" type="module"></script>
+     <script src="lib/easing/easing.min.js" type="module"></script>
+     <script src="lib/waypoints/waypoints.min.js" type="module"></script>
+     <script src="lib/owlcarousel/owl.carousel.min.js" type="module"></script>
+     <script src="lib/counterup/counterup.min.js" type="module"></script>
+     <script src="lib/parallax/parallax.min.js" type="module"></script>
+     <script src="lib/lightbox/js/lightbox.min.js" type="module"></script>
+    </body>
+ 
+</html>

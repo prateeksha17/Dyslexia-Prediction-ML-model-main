@@ -1,0 +1,36 @@
+
+
+.question {
+    margin-left: 8%;
+    width : 80%;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.content {
+    background-color:#eddd5e; /* Set question and answer portion to yellow */
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.content label {
+    display: inline-block; /* Keep radio buttons and options in the same row */
+    margin: 5px 0;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+#question {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #5B8C51;
+}
+
+.question span {
+    font-weight: bold; /* Making the question text bolder */
+}
